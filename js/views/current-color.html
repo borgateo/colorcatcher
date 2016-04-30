@@ -1,0 +1,61 @@
+<current-color>
+
+  <h2>Current Color</h2>
+
+  <div class="current-color--hex">
+    { color }
+  </div>
+  
+  <div 
+    class="current-color--circle"
+    style="border-color: { color }; background-color: { color };"
+  ></div>
+
+  <script>
+    this.on('update', function() {
+      this.color = opts.color;
+      this.colorReadable = opts.colorReadable;
+    });
+  </script>
+
+  <style>
+  current-color {
+    position: relative;
+  }
+
+    .current-color--hex {
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      color: #333;
+      text-align: center;
+      top: 65px;
+      position: relative;
+      height: 15px;
+    }
+
+    .current-color--circle::after {
+      content: "";
+      display: block;
+      background-color: rgba(255, 255 ,255, 0.75);
+    }
+
+    .current-color--circle,
+    .current-color--circle::after {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      margin: 0 auto;
+      margin-bottom: 45px;
+    }
+
+    .current-color--circle {
+      border-width: 17px;
+      border-style: solid;
+      border-color: #444;
+      box-shadow: 0px 3px 3px rgba( 0, 0, 0, .05 )
+    }
+
+  </style>
+
+</current-color>

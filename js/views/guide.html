@@ -1,0 +1,56 @@
+<guide>
+  <div class="show-guide" onclick="{ showGuide }">
+    [?]
+  </div>
+  <div class="container { isGuideShown ? 'show' : 'hidden' }">
+    <h3>How do I work?</h3>
+    <ul>
+      <li>Use your mouse cursor to get the colors in the screen. They'll appear in the "Current Color" section.</li>
+      <li>All the colors you've captured are available in the "Captured Colors" section.</li>
+    </ul>
+
+    <h3>Keyboard commands:</h3>
+    <ul>
+      <li>Hit SPACE to capture, and save a color.</li>
+      <li>To be super precise you can use your ARROW keys. I'll move your mouse cursor :)</li>
+    </ul>
+  </div>
+  
+
+  <script>
+    this.isGuideShown = false;
+
+    showGuide() {
+      this.isGuideShown = !this.isGuideShown;
+    }
+  </script>
+
+  <style>
+    guide {
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      text-align: left;
+      font-size: 21px;
+    }
+
+    guide .show-guide {
+      background-color: rgba(255, 255, 255, 0.85);
+      width: 25px;
+      padding: 5px;
+    }
+    guide .container {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 15px;
+    }
+    guide ul {
+      list-style: none;
+      margin: 0;
+    }
+    guide li {
+      margin: 15px 0;
+    }
+  </style>
+</guide>

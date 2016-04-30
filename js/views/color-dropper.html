@@ -1,0 +1,85 @@
+<color-dropper>
+
+  <current-color color="{ color }"></current-color>
+  
+  <history items="{ colorHistory }"></history>
+
+  <guide></guide>
+
+  <script>
+    let thisApp = this;
+    let currentColor;
+    const timeout = 120;
+
+    this.color = "";
+    this.colorHistory = [ /*{color: "#322332"} */ ];
+
+    document.onkeydown = handleKeyDown;
+
+    //var refresh = setInterval( getColor, timeout );
+
+    function handleKeyDown( event ) {
+      //event.preventDefault();
+      var keyCode = event.which || event.keyCode;
+
+      console.log(keyCode)
+
+      // SPACE
+      if ( keyCode === 32 ) {
+        getColor();
+        addColorHistory();
+        thisApp.update();
+        return;
+      }
+
+      // ESC - stop it
+      if ( keyCode === 27 ) {
+        clearInterval( refresh );
+        refresh = null;
+        return;
+      }
+
+      // LEFT ARROW
+      if ( keyCode === 37 ) {
+        peripheralStore.moveCursor( -1, 0 );
+        return;
+      }
+      // UP
+      if ( keyCode === 38 ) {
+        peripheralStore.moveCursor( 0, -1 );
+        return;
+      }
+      // RIGHT
+      if ( keyCode === 39 ) {
+        peripheralStore.moveCursor( 1, 0 );
+        return;
+      }
+      // DOWN ARROW
+      if ( keyCode === 40 ) {
+        peripheralStore.moveCursor( 0, 1 );
+        return;
+      }    
+    }
+
+    function getColor() { 
+        thisApp.color = colorStore.getColor().toHexString();
+        // colorReadable: colorStore.getReadableColor( thisApp.color ).toHexString()
+    }
+
+    function addColorHistory() {
+      var id = thisApp.colorHistory.length + 1;
+      var found = thisApp.colorHistory.some(function( el ) {
+        return el.color === thisApp.color;
+      });
+      if ( found ) return;
+
+      thisApp.colorHistory.push({
+        id: id,
+        color: thisApp.color
+      });
+
+    }
+
+  </script>
+
+</color-dropper>
