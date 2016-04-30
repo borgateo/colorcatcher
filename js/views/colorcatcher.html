@@ -19,10 +19,8 @@
     var refresh = setInterval( getColor, timeout );
 
     function handleKeyDown( event ) {
-      //event.preventDefault();
+      event.preventDefault();
       var keyCode = event.which || event.keyCode;
-
-      console.log(keyCode)
 
       // SPACE
       if ( keyCode === 32 ) {

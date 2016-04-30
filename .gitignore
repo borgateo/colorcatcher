@@ -1,1 +1,8 @@
 node_modules
+
+colorcatcher-darwin-x64
+colorcatcher-linux-ia32
+colorcatcher-linux-x64 
+colorcatcher-mas-x64
+colorcatcher-win32-ia32
+colorcatcher-win32-x64

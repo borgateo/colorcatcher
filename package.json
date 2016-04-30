@@ -4,7 +4,8 @@
   "description": "electron app to capture color in the screen",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "release": "electron-packager . --all"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   },
   "homepage": "",
   "devDependencies": {
+    "electron-packager": "^7.0.1",
     "electron-prebuilt": "^0.37.0"
   },
   "dependencies": {
