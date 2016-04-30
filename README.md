@@ -1,6 +1,6 @@
 # Colorcatcher
 
-![gif](https://www.dropbox.com/s/2sqidfbvc3ip5hb/catcher.gif)
+![gif](https://dl.dropboxusercontent.com/s/2sqidfbvc3ip5hb/catcher.gif?dl=0)
 
 
 ## How To Use
