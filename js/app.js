@@ -2,6 +2,6 @@
 (function () {
 	'use strict';
 
-	riot.mount('color-dropper', { data: '' });
+	riot.mount('colorcatcher', { data: '' });
 
 }());

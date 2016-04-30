@@ -1,4 +1,4 @@
-<color-dropper>
+<colorcatcher>
 
   <current-color color="{ color }"></current-color>
   
@@ -16,7 +16,7 @@
 
     document.onkeydown = handleKeyDown;
 
-    //var refresh = setInterval( getColor, timeout );
+    var refresh = setInterval( getColor, timeout );
 
     function handleKeyDown( event ) {
       //event.preventDefault();
@@ -28,7 +28,6 @@
       if ( keyCode === 32 ) {
         getColor();
         addColorHistory();
-        thisApp.update();
         return;
       }
 
@@ -64,6 +63,7 @@
     function getColor() { 
         thisApp.color = colorStore.getColor().toHexString();
         // colorReadable: colorStore.getReadableColor( thisApp.color ).toHexString()
+        thisApp.update();
     }
 
     function addColorHistory() {
@@ -82,4 +82,4 @@
 
   </script>
 
-</color-dropper>
+</colorcatcher>
