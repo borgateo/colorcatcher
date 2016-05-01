@@ -1,6 +1,6 @@
 {
   "name": "colorcatcher",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "electron app to capture colors in the screen",
   "main": "main.js",
   "scripts": {
