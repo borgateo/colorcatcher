@@ -16,6 +16,13 @@ npm install && npm start
 
 === WIP ===
 
+## Color formats: 
 
-color types: HEX	RGB	HSL	Type
-http://www.colorion.co/
+- HEX
+- RGB
+- HSL
+
+## TODO:
+
+- export generated colors palette 
+- share it
