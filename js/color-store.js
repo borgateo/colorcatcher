@@ -8,9 +8,12 @@
   exports.colorStore = {
 
     getColor: function( color ) {
+      if ( color ) {
+        return tinycolor( color );
+      }
       var mousePos = robot.getMousePos();
-      var newColor = color || "#" + robot.getPixelColor( mousePos.x, mousePos.y );
-      return tinycolor( newColor );
+      var newColor = robot.getPixelColor( mousePos.x, mousePos.y );
+      return tinycolor( "#" + newColor );
     },
 
     getReadableColor: function( color ) {

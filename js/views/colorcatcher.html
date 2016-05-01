@@ -83,7 +83,7 @@
     function addColorHistory() {
       var id = thisApp.colorHistory.length + 1;
       var found = thisApp.colorHistory.some(function( el ) {
-        return el.color === thisApp.color;
+        return el.color.toHexString() === thisApp.color.toHexString();
       });
       if ( found ) return;
 
