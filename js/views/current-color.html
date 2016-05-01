@@ -3,7 +3,7 @@
   <h2>Current Color</h2>
 
   <div class="current-color--hex">
-    { color }
+    { color.toHexString() }
   </div>
   
   <div 
@@ -14,7 +14,6 @@
   <script>
     this.on('update', function() {
       this.color = opts.color;
-      this.colorReadable = opts.colorReadable;
     });
   </script>
 

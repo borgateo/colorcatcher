@@ -15,3 +15,7 @@ npm install && npm start
 ```
 
 === WIP ===
+
+
+color types: HEX	RGB	HSL	Type
+http://www.colorion.co/

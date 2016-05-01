@@ -7,17 +7,17 @@
   
   exports.colorStore = {
 
-    getColor: function() {
+    getColor: function( color ) {
       var mousePos = robot.getMousePos();
-      var color = robot.getPixelColor( mousePos.x, mousePos.y );
-      return tinycolor( "#" + color );
+      var newColor = color || "#" + robot.getPixelColor( mousePos.x, mousePos.y );
+      return tinycolor( newColor );
     },
 
     getReadableColor: function( color ) {
-       color = color || "#FFF";
+       var newColor = color || "#FFF";
        return tinycolor.mostReadable( 
-        color,
-        [ color ],
+        newColor,
+        [ newColor ],
         { includeFallbackColors: true }
       );
     }

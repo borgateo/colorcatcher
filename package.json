@@ -1,7 +1,7 @@
 {
   "name": "colorcatcher",
-  "version": "0.0.1",
-  "description": "electron app to capture color in the screen",
+  "version": "0.0.2",
+  "description": "electron app to capture colors in the screen",
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
@@ -18,7 +18,7 @@
   "author": "borteo",
   "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/borteo/colorcatcher/issues"
   },
   "homepage": "",
   "devDependencies": {

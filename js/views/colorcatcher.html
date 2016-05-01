@@ -2,24 +2,40 @@
 
   <current-color color="{ color }"></current-color>
   
-  <history items="{ colorHistory }"></history>
+  <captured-colors items="{ colorHistory }"></captured-colors>
 
   <guide></guide>
 
   <script>
     let thisApp = this;
     let currentColor;
+    let refresh;
     const timeout = 120;
+    const debugging = false;
 
     this.color = "";
-    this.colorHistory = [ /*{color: "#322332"} */ ];
+    this.colorHistory = [];
+
+    if ( debugging ) {
+      for ( let i = 0; i < 10; i++ ) {
+        let generatedColor = colorStore.getColor( [ "#", i, i, i, i, i, i ].join("") );
+        this.colorHistory.push( {
+          color: generatedColor
+        } );  
+      }
+      
+    } else {
+      refresh = setInterval( getColor, timeout );
+    }
+
 
     document.onkeydown = handleKeyDown;
 
-    var refresh = setInterval( getColor, timeout );
-
     function handleKeyDown( event ) {
-      event.preventDefault();
+      if ( !debugging ) {
+        event.preventDefault();
+      }
+
       var keyCode = event.which || event.keyCode;
 
       // SPACE
@@ -59,7 +75,7 @@
     }
 
     function getColor() { 
-        thisApp.color = colorStore.getColor().toHexString();
+        thisApp.color = colorStore.getColor();
         // colorReadable: colorStore.getReadableColor( thisApp.color ).toHexString()
         thisApp.update();
     }
