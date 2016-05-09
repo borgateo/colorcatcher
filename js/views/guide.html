@@ -2,17 +2,29 @@
   <div class="show-guide" onclick="{ showGuide }">
     ❓
   </div>
+
   <div class="container { isGuideShown ? 'show' : 'hidden' }">
-    <h3>How do I work?</h3>
+    <div 
+      class="close-guide"
+      onclick="{ showGuide }"
+    >
+      Close [x]
+    </div>
+
+    <h2>Guide</h2>
+    <p>A simple color dropper that captures the colors in the screen.</p>
+
+    <h3>Sections</h3>
     <ul>
-      <li>Use your mouse cursor to get the colors in the screen. They'll appear in the "Current Color" section.</li>
-      <li>All the colors you've captured are available in the "Captured Colors" section.</li>
+      <li><strong>Current Color:</strong> shows the current color in the screen pointed by the mouse cursor.</li>
+      <li><strong>Color Models:</strong> you can select 3 different models: Hex, RGB, HSL. Simply click on it, to change the model.</li>
+      <li><strong>Captured Colors:</strong> contains all the colors saved.</li>
     </ul>
 
     <h3>Keyboard commands:</h3>
     <ul>
       <li>Hit SPACE to capture, and save a color.</li>
-      <li>To be super precise you can use your ARROW keys. I'll move your mouse cursor :)</li>
+      <li>To be super precise you can use your ARROW keys. It will move your mouse cursor 1px by 1px</li>
     </ul>
   </div>
   
@@ -27,30 +39,50 @@
 
   <style>
     guide {
-      cursor: pointer;
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      text-align: left;
-      font-size: 21px;
     }
 
     guide .show-guide {
-      background-color: rgba(255, 255, 255, 0.85);
-      width: 25px;
+      background-color: rgba(255, 255, 255, 0.95);
+      width: 18px;
       padding: 5px;
+      cursor: pointer;
+      border-bottom-right-radius: 50%;
+    }
+    guide .show-guide:hover {
+      background-color: rgb(255, 255, 255);
     }
     guide .container {
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 15px;
+      background-color: rgba(22, 22, 22, 0.98);
+      color: #FEFEFE;
+      padding: 13px;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      margin-left: 0;
+      transition: all .15s ease-in;
     }
+
+    guide .container.hidden {
+      margin-left: -200%;  
+    }
+    
     guide ul {
       list-style: none;
       margin: 0;
     }
     guide li {
       margin: 15px 0;
+    }
+    guide .close-guide {
+      position: absolute;
+      top: 10px;
+      right: 35px;
+      font-size: 14px;
+      cursor: pointer;
     }
   </style>
 </guide>

@@ -6,9 +6,9 @@
 
 	exports.peripheralStore = {
 		moveCursor: function( x, y ) {
-			var pos = robot.getMousePos();
-			var newX = pos.x + x;
-			var newY = pos.y + y;
+			let pos = robot.getMousePos();
+			let newX = pos.x + x;
+			let newY = pos.y + y;
 			robot.moveMouse( newX, newY );
 		}
 	};

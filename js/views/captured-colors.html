@@ -1,17 +1,26 @@
 <captured-colors>
 
   <h2 if={ items.length }>Captured Colors</h2>
+
   <div class="colors-container">
     <div 
       each={ items } 
       class="colors-container--color"
-      style="background-color: { color.toHexString(); }"
+      style="background-color: { color.hex }"
     >
       <div class="delete" onclick="{ remove }">❌</div>
-      <div class="values">
-        <span class="hex">{ color.toHexString() }</span>
-        <span class="rgb">{ color.toRgbString() }</span>
-        <span class="hsl">{ color.toHslString() }</span>
+      <div class="value">
+        <span class="hex { model == 'hex' ? 'active' : '' }">
+          { color.hex }
+        </span>
+        <span class="rgb { model == 'rgb' ? 'active' : '' }">
+          { color.rgb.r }, { color.rgb.g }, { color.rgb.b }
+        </span>
+        <span class="hsl { model == 'hsl' ? 'active' : '' }">
+          { (color.hsl.h).toFixed(2).replace(/\.00$/, '') },
+          { (color.hsl.s * 100).toFixed(2).replace(/\.00$/, '') }%, 
+          { (color.hsl.l * 100).toFixed(2).replace(/\.00$/, '') }%
+        </span>
       </div>
     </div>
   </div>
@@ -19,6 +28,10 @@
 
   <script>
     this.items = opts.items;
+
+    this.on('update', function() {
+      this.model = opts.model;
+    });
 
     remove( event ) {
       var item = event.item;
@@ -37,56 +50,53 @@
     }
 
     captured-colors .colors-container--color {
-      margin-right: 7px;
-      margin-left: 7px;
+      margin-right: 3px;
+      margin-left: 3px;
       position: relative;
-      width: 125px;
-      min-width: 110px;
-      height: 125px;
-      border-radius: 3px;
+      width: 80px;
+      height: 60px;
       display: inline-block;
-      margin-top: 13.5px;
+      margin-top: 10px;
       box-shadow: 0px 3px 3px rgba( 0, 0, 0, .05 );
       overflow: hidden;
+      transition: all .2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      border-radius: 1px;
     }
 
     captured-colors .colors-container--color:hover {
-      opacity: 0.85;
+      opacity: 0.95;
     }
 
-    captured-colors .hex,
-    captured-colors .rgb ,
-    captured-colors .hsl {
+    captured-colors .value {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      transition: all .1s cubic-bezier(0.68, -0.55, 0.27, 1.55) .2s;
       text-align: center;
       color: #77858c;
       text-transform: uppercase;
       font-size: 11.5px;
       display: block;
-      padding: 2px 0;
-      line-height: 23px;
-      background-color: #FFF;      
-    }
-
-    captured-colors .hsl {
-      padding-bottom: 20px;
-    }
-
-    captured-colors .values {
-      width: 100%;
-      position: absolute;
-      bottom: -70px;
-      transition: all .15s cubic-bezier(0.68, -0.55, 0.27, 1.55) .2s;
+      padding: 5px 0;
+      background-color: #FFF;
     }
     captured-colors .colors-container--color:hover .values {
       bottom: -11px;
     }
 
+    captured-colors .value span {
+      display: none;
+    }
+
+    captured-colors .value .active {
+      display: block;
+    }
 
     captured-colors .delete {
       cursor: pointer;
       background-color: #EAEAE9;
-      padding: 5px 5px 3px 5px;
-      border-radius: 3px;
+      padding: 5px 7px 3px 2px;
+      border-radius: 2px;
       transition: all .15s cubic-bezier(0.68, -0.55, 0.27, 1.55);
       top: -30px;
       position: absolute;

@@ -2,18 +2,29 @@
 
   <h2>Current Color</h2>
 
-  <div class="current-color--hex">
-    { color.toHexString() }
+  <div class="current-color">
+    <span class="hex { model == 'hex' ? 'active' : '' }">
+      { color.hex }
+    </span>
+    <span class="rgb { model == 'rgb' ? 'active' : '' }">
+      { color.rgb.r }, { color.rgb.g }, { color.rgb.b }
+    </span>
+    <span class="hsl { model == 'hsl' ? 'active' : '' }">
+      { (color.hsl.h).toFixed(2).replace(/\.00$/, '') },
+      { (color.hsl.s * 100).toFixed(2).replace(/\.00$/, '') }%, 
+      { (color.hsl.l * 100).toFixed(2).replace(/\.00$/, '') }%
+    </span>
   </div>
   
   <div 
-    class="current-color--circle"
-    style="border-color: { color }; background-color: { color };"
+    class="current-color--square"
+    style="border-color: { color.hex }; background-color: { color.hex };"
   ></div>
 
   <script>
     this.on('update', function() {
       this.color = opts.color;
+      this.model = opts.model;
     });
   </script>
 
@@ -22,33 +33,39 @@
     position: relative;
   }
 
-    .current-color--hex {
+    .current-color {
       font-weight: bold;
       text-align: center;
       text-transform: uppercase;
       color: #333;
-      text-align: center;
-      top: 65px;
+      top: 78px;
       position: relative;
       height: 15px;
     }
 
-    .current-color--circle::after {
+    .current-color span {
+      display: none;
+    }
+
+    .current-color .active {
+      display: block;
+    }
+
+    .current-color--square::after {
       content: "";
       display: block;
       background-color: rgba(255, 255 ,255, 0.75);
     }
 
-    .current-color--circle,
-    .current-color--circle::after {
-      width: 85px;
-      height: 85px;
-      border-radius: 50%;
+    .current-color--square,
+    .current-color--square::after {
+      width: 115px;
+      height: 115px;
       margin: 0 auto;
-      margin-bottom: 45px;
+      margin-bottom: 10px;
     }
 
-    .current-color--circle {
+    .current-color--square {
       border-width: 17px;
       border-style: solid;
       border-color: #444;

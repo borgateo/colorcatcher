@@ -1,24 +1,40 @@
 <colorcatcher>
 
-  <current-color color="{ color }"></current-color>
+  <current-color color="{ color }" model="{ colorModel }"></current-color>
+
+  <div id="color-model">
+    <select onchange={ componentChanged }>
+      <option value="hex">HEX</option>
+      <option value="rgb">RBG</option>
+      <option value="hsl">HSL</option>
+    </select>
+  </div>
   
-  <captured-colors items="{ colorHistory }"></captured-colors>
+  <captured-colors items="{ colorHistory }" model="{ colorModel }"></captured-colors>
 
   <guide></guide>
+  <settings></settings>
 
   <script>
+    const timeout = 120;
+    const debugging = false;
+    const colorModels = [
+      "hex",
+      "rgb",
+      "hsl"
+    ];
+
     let thisApp = this;
     let currentColor;
     let refresh;
-    const timeout = 120;
-    const debugging = false;
 
     this.color = "";
     this.colorHistory = [];
+    this.colorModel = colorModels[0];
 
     if ( debugging ) {
       for ( let i = 0; i < 10; i++ ) {
-        let generatedColor = colorStore.getColor( [ "#", i, i, i, i, i, i ].join("") );
+        let generatedColor = colorStore.getColor( [ i, i, i, i, i, i ].join("") );
         this.colorHistory.push( {
           color: generatedColor
         } );  
@@ -83,7 +99,7 @@
     function addColorHistory() {
       var id = thisApp.colorHistory.length + 1;
       var found = thisApp.colorHistory.some(function( el ) {
-        return el.color.toHexString() === thisApp.color.toHexString();
+        return el.color.hex === thisApp.color.hex;
       });
       if ( found ) return;
 
@@ -94,6 +110,33 @@
 
     }
 
+    componentChanged( event ) {
+      this.colorModel = ( event.target.value );
+    }
+
   </script>
+
+  <style>
+    #color-model {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+    #color-model select {
+      border:none;
+      outline:none;
+      display: inline-block;
+      -webkit-appearance:none;
+      cursor:pointer;
+      border: 0;
+      border-radius: 50%;
+      font-size: 15px;
+      padding-left: 10px;
+      width: 50px;
+      height: 50px;
+      box-shadow: 0px 3px 3px rgba( 0, 0, 0, .05 );
+      background-color: #333;
+      color: #EEE;
+    }
+  </style>
 
 </colorcatcher>

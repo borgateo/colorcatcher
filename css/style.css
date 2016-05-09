@@ -12,13 +12,9 @@ body {
   font-family: 'lato';
   line-height: 1;
   box-sizing: border-box;
-}
-
-.hidden {
-  display: none;
+  color: #333;
 }
 
 h2 {
   text-align: center;
-  color: #333;
 }
