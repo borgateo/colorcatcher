@@ -12,7 +12,7 @@
   
   <captured-colors items="{ colorHistory }" model="{ colorModel }"></captured-colors>
 
-  <guide></guide>
+  <!--guide></guide -->
   <settings></settings>
 
   <script>
@@ -117,22 +117,27 @@
   </script>
 
   <style>
+    colorcatcher {
+      display: block;
+      padding-top: 50px;
+    }
+
     #color-model {
       text-align: center;
-      margin-bottom: 45px;
+      position: absolute;
+      top: 10px;
+      right: 25px;
     }
     #color-model select {
-      border:none;
-      outline:none;
+      border: none;
+      outline: none;
       display: inline-block;
-      -webkit-appearance:none;
-      cursor:pointer;
+      cursor: pointer;
       border: 0;
-      border-radius: 50%;
       font-size: 15px;
       padding-left: 10px;
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 35px;
       box-shadow: 0px 3px 3px rgba( 0, 0, 0, .05 );
       background-color: #333;
       color: #EEE;

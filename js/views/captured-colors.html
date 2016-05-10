@@ -1,7 +1,5 @@
 <captured-colors>
 
-  <h2 if={ items.length }>Captured Colors</h2>
-
   <div class="colors-container">
     <div 
       each={ items } 
@@ -41,6 +39,14 @@
   </script>
 
   <style>
+    captured-colors {
+      min-width: 250px;
+      width: 66%;
+      display: inline-block;
+      vertical-align: top;
+      overflow: auto;
+      height: 230px;
+    }
     captured-colors .colors-container { 
       margin: 0;
       padding: 0;
@@ -53,7 +59,7 @@
       margin-right: 3px;
       margin-left: 3px;
       position: relative;
-      width: 80px;
+      width: 90px;
       height: 60px;
       display: inline-block;
       margin-top: 10px;
@@ -95,7 +101,7 @@
     captured-colors .delete {
       cursor: pointer;
       background-color: #EAEAE9;
-      padding: 5px 7px 3px 2px;
+      padding: 5px 5px 2px 2px;
       border-radius: 2px;
       transition: all .15s cubic-bezier(0.68, -0.55, 0.27, 1.55);
       top: -30px;

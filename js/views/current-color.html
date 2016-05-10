@@ -1,6 +1,9 @@
 <current-color>
-
-  <h2>Current Color</h2>
+  
+  <div 
+    class="current-color--circle"
+    style="border-color: { color.hex }; background-color: { color.hex };"
+  ></div>
 
   <div class="current-color">
     <span class="hex { model == 'hex' ? 'active' : '' }">
@@ -15,11 +18,6 @@
       { (color.hsl.l * 100).toFixed(2).replace(/\.00$/, '') }%
     </span>
   </div>
-  
-  <div 
-    class="current-color--square"
-    style="border-color: { color.hex }; background-color: { color.hex };"
-  ></div>
 
   <script>
     this.on('update', function() {
@@ -29,18 +27,22 @@
   </script>
 
   <style>
-  current-color {
-    position: relative;
-  }
+    current-color {
+      min-width: 165px;
+      width: 33%;
+      display: inline-block;
+      vertical-align: center;
+      padding-top: 20px;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
 
     .current-color {
       font-weight: bold;
       text-align: center;
       text-transform: uppercase;
       color: #333;
-      top: 78px;
-      position: relative;
-      height: 15px;
+      padding-top: 10px;
+      padding-bottom: 15px;
     }
 
     .current-color span {
@@ -51,21 +53,22 @@
       display: block;
     }
 
-    .current-color--square::after {
+    .current-color--circle::after {
       content: "";
       display: block;
       background-color: rgba(255, 255 ,255, 0.75);
     }
 
-    .current-color--square,
-    .current-color--square::after {
-      width: 115px;
-      height: 115px;
+    .current-color--circle,
+    .current-color--circle::after {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
       margin: 0 auto;
       margin-bottom: 10px;
     }
 
-    .current-color--square {
+    .current-color--circle {
       border-width: 17px;
       border-style: solid;
       border-color: #444;
